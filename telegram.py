@@ -36,7 +36,7 @@ def get_extension(url):
 
 def get_apod_pictures(apod_url, folder, count):
     payload = {
-        'api_key': 'YxxmPf67CgZOMvoBPx4eOxXoao6hvveg76fJKykS',
+        'api_key': os.getenv('API_KEY'),
         'count': count}
     apod_pictures = requests.get(apod_url, params=payload)
     apod_pictures.raise_for_status()
