@@ -5,12 +5,13 @@ from dotenv import load_dotenv
 from os.path import splitext, split
 from urllib.parse import urlparse, unquote
 
+
 load_dotenv()
 image_folder = 'images'
 url = 'https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg'
-# url = "https://example.com/txt/hello%20world.txt?v=9#python"
 launch_url = 'https://api.spacexdata.com/v3/launches/67'
 apod_url = 'https://api.nasa.gov/planetary/apod'
+epic_url = 'https://api.nasa.gov/EPIC/api/natural/images'
 
 
 def fetch_spacex_last_launch(launch_url, folder):
@@ -52,4 +53,21 @@ def get_apod_pictures(apod_url, folder, count):
             file.write(response.content)
 
 
-print(get_apod_pictures(apod_url, image_folder, 30))
+def get_epic_pictures(epic_url, folder):
+    payload = {
+        'api_key': os.getenv('API_KEY')}
+    pictures = requests.get(epic_url, params=payload)
+    pictures.raise_for_status()
+    for i, picture in enumerate(pictures.json()):
+        date = (picture['date']).split()[0].split(sep='-')
+        picture_name = picture['image']
+        year, month, day = date[0], date[1], date[2]
+        picture_url = (
+                      f'https://api.nasa.gov/EPIC/archive/natural/'
+                      f'{year}/{month}/{day}/png/{picture_name}.png'
+                    )
+        response = requests.get(picture_url, payload)
+        response.raise_for_status()
+        filename = os.path.join(folder, f"epic_picture_{i}.png")
+        with open(filename, 'wb') as file:
+            file.write(response.content)
