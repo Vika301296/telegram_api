@@ -1,9 +1,11 @@
 import os
 import requests
 
+from dotenv import load_dotenv
 from os.path import splitext, split
 from urllib.parse import urlparse, unquote
 
+load_dotenv()
 image_folder = 'images'
 url = 'https://upload.wikimedia.org/wikipedia/commons/3/3f/HST-SM4.jpeg'
 # url = "https://example.com/txt/hello%20world.txt?v=9#python"
