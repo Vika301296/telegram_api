@@ -11,6 +11,7 @@ load_dotenv()
 
 TOKEN = os.getenv('TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
+SLEEPING_TIME = 4*60*60
 images = os.listdir('images')
 
 
@@ -30,7 +31,7 @@ def main():
             with open(image_path, 'rb') as image_file:
                 bot.send_photo(chat_id=TELEGRAM_CHAT_ID, photo=image_file)
                 last_sent_index += 1
-        time.sleep(10)
+        time.sleep(SLEEPING_TIME)
         last_sent_index += 2
         if last_sent_index >= len(images):
             print("All images have been sent.")
