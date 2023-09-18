@@ -1,6 +1,5 @@
 import os
 import random
-import sys
 import telegram
 import time
 
@@ -13,14 +12,8 @@ SLEEPING_TIME = 4*60*60
 images = os.listdir('images')
 
 
-def check_token():
-    return TOKEN
-
-
 def main():
     load_dotenv()
-    if not check_token():
-        sys.exit(1)
     bot = telegram.Bot(token=TOKEN)
     last_sent_index = 0
     while True:
