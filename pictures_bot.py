@@ -33,10 +33,10 @@ def main():
         time.sleep(SLEEPING_TIME)
         last_sent_index += 2
         if last_sent_index >= len(images):
-            print("All images have been sent.")
+            print('All images have been sent.')
             random.shuffle(images)
             last_sent_index = 0
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

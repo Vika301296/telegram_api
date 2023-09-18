@@ -20,12 +20,12 @@ def get_epic_pictures(folder='images'):
                     )
         response = requests.get(picture_url, payload)
         response.raise_for_status()
-        filename = os.path.join(folder, f"epic_picture_{item}.png")
+        filename = os.path.join(folder, f'epic_picture_{item}.png')
         with open(filename, 'wb') as file:
             file.write(response.content)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     load_dotenv()
     api_key = os.getenv('NASA_API_KEY')
     get_epic_pictures()

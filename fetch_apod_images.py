@@ -18,12 +18,12 @@ def get_apod_pictures(count=1, folder='images'):
         picture_extension = get_extension(picture_url)
         response = requests.get(picture_url)
         response.raise_for_status()
-        filename = os.path.join(folder, f"nasa_apod_{item}{picture_extension}")
+        filename = os.path.join(folder, f'nasa_apod_{item}{picture_extension}')
         with open(filename, 'wb') as file:
             file.write(response.content)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     load_dotenv()
     api_key = os.getenv('NASA_API_KEY')
     get_apod_pictures()
