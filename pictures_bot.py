@@ -1,14 +1,42 @@
 import os
+import random
+import sys
 import telegram
+import time
 
 from dotenv import load_dotenv
 
 
 load_dotenv()
-bot = telegram.Bot(token=os.getenv('TOKEN'))
-chat_id = 986055024
-chat_id_1 = '@nasa_and_spacex_pictures'
-# bot.send_message(text='Hi Vika!', chat_id=chat_id_1)
-URL = 'https://cdn2.thecatapi.com/images/3dl.jpg'
 
-bot.send_photo(chat_id_1, URL)
+TOKEN = os.getenv('TOKEN')
+TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
+images = os.listdir('images')
+
+
+def check_token():
+    return TOKEN
+
+
+def main():
+    if not check_token():
+        sys.exit(1)
+    bot = telegram.Bot(token=TOKEN)
+    last_sent_index = 0
+    while True:
+        next_images = images[last_sent_index:last_sent_index + 2]
+        for image_name in next_images:
+            image_path = os.path.join('images', image_name)
+            with open(image_path, 'rb') as image_file:
+                bot.send_photo(chat_id=TELEGRAM_CHAT_ID, photo=image_file)
+                last_sent_index += 1
+        time.sleep(10)
+        last_sent_index += 2
+        if last_sent_index >= len(images):
+            print("All images have been sent.")
+            random.shuffle(images)
+            last_sent_index = 0
+
+
+if __name__ == "__main__":
+    main()

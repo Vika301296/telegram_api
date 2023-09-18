@@ -21,6 +21,6 @@ def get_apod_pictures(count=1, folder='images'):
         print(picture_extension)
         response = requests.get(picture_url)
         response.raise_for_status()
-        filename = os.path.join(folder, f"nasa_apod_{i}.{picture_extension}")
+        filename = os.path.join(folder, f"nasa_apod_{i}{picture_extension}")
         with open(filename, 'wb') as file:
             file.write(response.content)
