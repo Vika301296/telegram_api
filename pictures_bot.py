@@ -7,8 +7,6 @@ import time
 from dotenv import load_dotenv
 
 
-load_dotenv()
-
 TOKEN = os.getenv('TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 SLEEPING_TIME = 4*60*60
@@ -20,6 +18,7 @@ def check_token():
 
 
 def main():
+    load_dotenv()
     if not check_token():
         sys.exit(1)
     bot = telegram.Bot(token=TOKEN)
