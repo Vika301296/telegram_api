@@ -3,13 +3,11 @@ import requests
 
 from dotenv import load_dotenv
 
-load_dotenv()
-
 
 def get_epic_pictures(folder='images'):
     epic_url = 'https://api.nasa.gov/EPIC/api/natural/images'
     payload = {
-        'api_key': os.getenv('API_KEY')}
+        'api_key': api_key}
     pictures = requests.get(epic_url, params=payload)
     pictures.raise_for_status()
     for i, picture in enumerate(pictures.json()):
@@ -28,4 +26,6 @@ def get_epic_pictures(folder='images'):
 
 
 if __name__ == "__main__":
+    load_dotenv()
+    api_key = os.getenv('API_KEY')
     get_epic_pictures()
