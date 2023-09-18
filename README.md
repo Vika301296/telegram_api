@@ -38,6 +38,12 @@ python3 pictures_bot.py
 - `TOKEN` — Токен телеграмм-бота, необходимый для отправки сообщений
 - `TELEGRAM_CHAT_ID` — ID чата, в который будут отправляться снимки
 
+Получение ключа доступа к API NASA:
+https://api.nasa.gov
+
+Получение токена телеграмм-бота:
+https://smmplanner.com/blog/otlozhennyj-posting-v-telegram/
+
 ## Цели проекта
 
 Код написан в учебных целях — это урок в курсе по Python и веб-разработке на сайте [Devman](https://dvmn.org).
