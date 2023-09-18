@@ -14,3 +14,7 @@ def fetch_spacex_last_launch(folder='images', launch_id='latest'):
         filename = os.path.join(folder, f"picture_{i}.jpg")
         with open(filename, 'wb') as file:
             file.write(response.content)
+
+
+if __name__ == "__main__":
+    fetch_spacex_last_launch()

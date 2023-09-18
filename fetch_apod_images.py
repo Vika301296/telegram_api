@@ -18,9 +18,12 @@ def get_apod_pictures(count=1, folder='images'):
     for i, apod_picture in enumerate(response):
         picture_url = apod_picture['url']
         picture_extension = get_extension(picture_url)
-        print(picture_extension)
         response = requests.get(picture_url)
         response.raise_for_status()
         filename = os.path.join(folder, f"nasa_apod_{i}{picture_extension}")
         with open(filename, 'wb') as file:
             file.write(response.content)
+
+
+if __name__ == "__main__":
+    get_apod_pictures()

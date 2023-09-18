@@ -25,3 +25,7 @@ def get_epic_pictures(folder='images'):
         filename = os.path.join(folder, f"epic_picture_{i}.png")
         with open(filename, 'wb') as file:
             file.write(response.content)
+
+
+if __name__ == "__main__":
+    get_epic_pictures()
