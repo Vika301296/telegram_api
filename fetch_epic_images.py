@@ -27,5 +27,5 @@ def get_epic_pictures(folder='images'):
 
 if __name__ == "__main__":
     load_dotenv()
-    api_key = os.getenv('API_KEY')
+    api_key = os.getenv('NASA_API_KEY')
     get_epic_pictures()

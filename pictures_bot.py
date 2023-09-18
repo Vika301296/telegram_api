@@ -7,7 +7,7 @@ import time
 from dotenv import load_dotenv
 
 
-TOKEN = os.getenv('TOKEN')
+TOKEN = os.getenv('TELEGRAM_TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 SLEEPING_TIME = 4*60*60
 images = os.listdir('images')
