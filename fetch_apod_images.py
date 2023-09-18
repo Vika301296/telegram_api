@@ -12,13 +12,13 @@ def get_apod_pictures(count=1, folder='images'):
         'count': count}
     apod_pictures = requests.get(apod_url, params=payload)
     apod_pictures.raise_for_status()
-    response = apod_pictures.json()
-    for i, apod_picture in enumerate(response):
+    apod_pictures = apod_pictures.json()
+    for item, apod_picture in enumerate(apod_pictures):
         picture_url = apod_picture['url']
         picture_extension = get_extension(picture_url)
         response = requests.get(picture_url)
         response.raise_for_status()
-        filename = os.path.join(folder, f"nasa_apod_{i}{picture_extension}")
+        filename = os.path.join(folder, f"nasa_apod_{item}{picture_extension}")
         with open(filename, 'wb') as file:
             file.write(response.content)
 

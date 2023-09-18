@@ -8,10 +8,10 @@ def fetch_spacex_last_launch(folder='images', launch_id='latest'):
     response.raise_for_status()
     response = response.json()
     all_images = response['links']['flickr_images']
-    for i, image_url in enumerate(all_images):
+    for item, image_url in enumerate(all_images):
         response = requests.get(image_url)
         response.raise_for_status()
-        filename = os.path.join(folder, f"picture_{i}.jpg")
+        filename = os.path.join(folder, f"picture_{item}.jpg")
         with open(filename, 'wb') as file:
             file.write(response.content)
 
