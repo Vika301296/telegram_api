@@ -2,6 +2,7 @@ import os
 import requests
 
 from dotenv import load_dotenv
+from pictures import download_picture
 
 
 def get_epic_pictures(folder='images'):
@@ -20,9 +21,9 @@ def get_epic_pictures(folder='images'):
                     )
         response = requests.get(picture_url, payload)
         response.raise_for_status()
-        filename = os.path.join(folder, f'epic_picture_{item}.png')
-        with open(filename, 'wb') as file:
-            file.write(response.content)
+        picture_extension = '.png'
+        prefix = 'epic'
+        download_picture(folder, item, picture_extension, response, prefix)
 
 
 if __name__ == '__main__':

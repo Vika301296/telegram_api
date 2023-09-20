@@ -2,7 +2,7 @@ import os
 import requests
 
 from dotenv import load_dotenv
-from get_extension import get_extension
+from pictures import get_extension, download_picture
 
 
 def get_apod_pictures(count=1, folder='images'):
@@ -18,9 +18,8 @@ def get_apod_pictures(count=1, folder='images'):
         picture_extension = get_extension(picture_url)
         response = requests.get(picture_url)
         response.raise_for_status()
-        filename = os.path.join(folder, f'nasa_apod_{item}{picture_extension}')
-        with open(filename, 'wb') as file:
-            file.write(response.content)
+        prefix = 'apod'
+        download_picture(folder, item, picture_extension, response, prefix)
 
 
 if __name__ == '__main__':
