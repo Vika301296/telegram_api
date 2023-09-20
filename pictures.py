@@ -1,4 +1,5 @@
 import os
+import requests
 
 from os.path import splitext, split
 from urllib.parse import urlparse, unquote
@@ -12,7 +13,11 @@ def get_extension(url):
     return extension
 
 
-def download_picture(folder, item, picture_extension, response, prefix):
+def download_picture(
+        folder, item, picture_extension,
+        prefix, picture_url, payload=None):
+    response = requests.get(picture_url, params=payload)
+    response.raise_for_status()
     filename = os.path.join(
         folder, f'{prefix}_picture_{item}{picture_extension}')
     with open(filename, 'wb') as file:

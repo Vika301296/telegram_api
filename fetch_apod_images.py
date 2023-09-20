@@ -16,10 +16,8 @@ def get_apod_pictures(count=1, folder='images'):
     for item, apod_picture in enumerate(apod_pictures):
         picture_url = apod_picture['url']
         picture_extension = get_extension(picture_url)
-        response = requests.get(picture_url)
-        response.raise_for_status()
         prefix = 'apod'
-        download_picture(folder, item, picture_extension, response, prefix)
+        download_picture(folder, item, picture_extension, prefix, picture_url)
 
 
 if __name__ == '__main__':

@@ -19,11 +19,10 @@ def get_epic_pictures(folder='images'):
                       f'https://api.nasa.gov/EPIC/archive/natural/'
                       f'{year}/{month}/{day}/png/{picture_name}.png'
                     )
-        response = requests.get(picture_url, payload)
-        response.raise_for_status()
         picture_extension = '.png'
         prefix = 'epic'
-        download_picture(folder, item, picture_extension, response, prefix)
+        download_picture(
+            folder, item, picture_extension, prefix, picture_url, payload)
 
 
 if __name__ == '__main__':
