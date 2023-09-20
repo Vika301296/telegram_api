@@ -28,5 +28,5 @@ if __name__ == '__main__':
     load_dotenv()
     TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
     TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
-    SLEEPING_TIME = 10
+    SLEEPING_TIME = 4*60*60
     main()
