@@ -14,12 +14,12 @@ def main():
     images = os.listdir('images')
     bot = telegram.Bot(token=telegram_token)
     while True:
-        for index, image_name in enumerate(images):
+        for image_name in images:
             image_path = os.path.join('images', image_name)
             with open(image_path, 'rb') as image_file:
                 bot.send_photo(chat_id=telegram_chat_id, photo=image_file)
-                time.sleep(sleeping_time)
-            random.shuffle(images)
+            time.sleep(sleeping_time)
+        random.shuffle(images)
 
 
 if __name__ == '__main__':
