@@ -7,6 +7,10 @@ from dotenv import load_dotenv
 
 
 def main():
+    load_dotenv()
+    telegram_token = os.getenv('TELEGRAM_TOKEN')
+    telegram_chat_id = os.getenv('TELEGRAM_CHAT_ID')
+    sleeping_time = 4*60*60
     images = os.listdir('images')
     bot = telegram.Bot(token=telegram_token)
     last_sent_index = 0
@@ -25,8 +29,4 @@ def main():
 
 
 if __name__ == '__main__':
-    load_dotenv()
-    telegram_token = os.getenv('TELEGRAM_TOKEN')
-    telegram_chat_id = os.getenv('TELEGRAM_CHAT_ID')
-    sleeping_time = 4*60*60
     main()
