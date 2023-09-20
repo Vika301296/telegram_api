@@ -6,6 +6,9 @@ from pictures import get_extension, download_picture
 
 
 def get_apod_pictures(count=1, folder='images'):
+
+    load_dotenv()
+    api_key = os.getenv('NASA_API_KEY')
     apod_url = 'https://api.nasa.gov/planetary/apod'
     payload = {
         'api_key': api_key,
@@ -22,6 +25,4 @@ def get_apod_pictures(count=1, folder='images'):
 
 
 if __name__ == '__main__':
-    load_dotenv()
-    api_key = os.getenv('NASA_API_KEY')
     get_apod_pictures()

@@ -6,6 +6,8 @@ from pictures import download_picture
 
 
 def get_epic_pictures(folder='images'):
+    load_dotenv()
+    api_key = os.getenv('NASA_API_KEY')
     epic_url = 'https://api.nasa.gov/EPIC/api/natural/images'
     payload = {
         'api_key': api_key}
@@ -26,6 +28,4 @@ def get_epic_pictures(folder='images'):
 
 
 if __name__ == '__main__':
-    load_dotenv()
-    api_key = os.getenv('NASA_API_KEY')
     get_epic_pictures()
