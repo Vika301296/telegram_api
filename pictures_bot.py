@@ -9,10 +9,10 @@ from dotenv import load_dotenv
 TOKEN = os.getenv('TELEGRAM_TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
 SLEEPING_TIME = 4*60*60
-images = os.listdir('images')
 
 
 def main():
+    images = os.listdir('images')
     load_dotenv()
     bot = telegram.Bot(token=TOKEN)
     last_sent_index = 0
