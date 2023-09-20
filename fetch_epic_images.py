@@ -11,7 +11,7 @@ def get_epic_pictures(folder='images'):
         'api_key': api_key}
     pictures = requests.get(epic_url, params=payload)
     pictures.raise_for_status()
-    for item, picture in enumerate(pictures.json()):
+    for number, picture in enumerate(pictures.json()):
         date = (picture['date']).split()[0].split(sep='-')
         picture_name = picture['image']
         year, month, day = date[0], date[1], date[2]
@@ -22,7 +22,7 @@ def get_epic_pictures(folder='images'):
         picture_extension = '.png'
         prefix = 'epic'
         download_picture(
-            folder, item, picture_extension, prefix, picture_url, payload)
+            folder, number, picture_extension, prefix, picture_url, payload)
 
 
 if __name__ == '__main__':

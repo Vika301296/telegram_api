@@ -14,11 +14,11 @@ def get_extension(url):
 
 
 def download_picture(
-        folder, item, picture_extension,
+        folder, number, picture_extension,
         prefix, picture_url, payload=None):
     response = requests.get(picture_url, params=payload)
     response.raise_for_status()
     filename = os.path.join(
-        folder, f'{prefix}_picture_{item}{picture_extension}')
+        folder, f'{prefix}_picture_{number}{picture_extension}')
     with open(filename, 'wb') as file:
         file.write(response.content)
